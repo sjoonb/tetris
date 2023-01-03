@@ -9,7 +9,9 @@ TARGET   := main
 INCLUDE  := -Iinclude/
 SRC      :=                      \
    $(wildcard src/lib/*.cpp) \
-   $(wildcard src/*.cpp)         
+   $(wildcard src/*.cpp) \
+   $(wildcard src/lib/common/*.cpp) \
+
 TEST_SRC      :=                      \
    $(wildcard src/test/*.cpp) 
 TEST_BASE := $(basename $(TEST_SRC))

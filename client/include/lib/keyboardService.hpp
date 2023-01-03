@@ -7,7 +7,7 @@
 #include <vector>
 #include <queue>
 #include <mutex>
-#include "./sharedQueue.hpp"
+#include "./common/sharedQueue.hpp"
 
 class KeyboardService
 {
