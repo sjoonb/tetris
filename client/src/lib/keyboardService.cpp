@@ -1,17 +1,22 @@
 
 #include "../../include/lib/keyboardService.hpp"
 
+#include <iostream>
+
 KeyboardService::KeyboardService()
 {
     q = new SharedQueue<char>();
+    disposed = new bool;
+    (*disposed) = false;
 }
 void *KeyboardService::run()
 {
-    for (;;)
+    while (!(*disposed))
     {
         char ch = getInput();
         q->enqueue(ch);
     }
+    return nullptr;
 }
 std::queue<char> KeyboardService::getKeys()
 {
@@ -36,4 +41,7 @@ char KeyboardService::getInput()
     if (tcsetattr(0, TCSADRAIN, &old) < 0)
         perror("tcsetattr ~ICANON");
     return (buf);
+}
+void KeyboardService::dispose() {
+    (*disposed) = true;
 }

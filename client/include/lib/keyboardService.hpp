@@ -13,14 +13,14 @@ class KeyboardService
 {
 public:
     KeyboardService();
+    void dispose();
     void *run();
     std::queue<char> getKeys();
 
 private:
+    bool* disposed;
     SharedQueue<char> *q;
     char getInput();
 };
-
-
 
 #endif
